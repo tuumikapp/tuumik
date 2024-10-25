@@ -1,0 +1,38 @@
+{
+  "name": "tuumik",
+  "private": true,
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "scripts": {
+    "local:prod": "env-cmd -f ./.deploy/local-prod/.env meteor run --settings ./.deploy/local-prod/settings.json",
+    "local:demo": "env-cmd -f ./.deploy/local-demo/.env meteor run --settings ./.deploy/local-demo/settings.json",
+    "test": "meteor test --once --driver-package meteortesting:mocha",
+    "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
+    "visualize": "meteor --production --extra-packages bundle-visualizer"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.23.5",
+    "chart.js": "^4.4.3",
+    "dayjs": "^1.11.12",
+    "lodash.debounce": "^4.0.8",
+    "meteor-node-stubs": "^1.2.7",
+    "meteor-vite": "^1.10.4",
+    "pinia": "^2.2.0",
+    "postmark": "^4.0.4",
+    "vue-router": "^4.2.5"
+  },
+  "meteor": {
+    "mainModule": {
+      "client": "src/client/startup/main-empty.js",
+      "server": "src/server/startup/main.js"
+    },
+    "testModule": "tests/main.js"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.8.3",
+    "@vitejs/plugin-vue": "^4.6.2",
+    "env-cmd": "^10.1.0",
+    "vite": "^4.5.2",
+    "vue": "^3.4.14"
+  }
+}

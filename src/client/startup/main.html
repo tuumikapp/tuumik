@@ -1,0 +1,44 @@
+<!-- Copyright (C) 2017-2024 Tuumik Systems OÜ -->
+
+<head>
+  <meta charset="utf-8">
+  <title>Tuumik</title>
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <style>
+    #pre-bundle-spinner {
+      border: 3px dashed #1f1f1f;
+      border-bottom: 1px dashed transparent;
+      border-radius: 50%;
+      animation: prespinner 3000ms 0ms infinite forwards linear;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      height: 4em;
+      width: 4em;
+      z-index: 10000;
+    }
+
+    @keyframes prespinner {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="app">
+    <div id="pre-bundle-spinner"></div>
+  </div>
+</body>
