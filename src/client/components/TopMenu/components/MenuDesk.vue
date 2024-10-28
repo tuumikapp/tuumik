@@ -18,7 +18,7 @@
       <RouterLink :to="'/admin/settings'" class="menu-item">General Settings</RouterLink>
       <RouterLink :to="'/admin/users/list'" class="menu-item">User Accounts</RouterLink>
       <RouterLink :to="'/admin/teams'" class="menu-item">Teams</RouterLink>
-      <RouterLink :to="'/admin/exporters'" class="menu-item">Exporters</RouterLink>
+      <RouterLink v-if="!generalStore.settings.demoMode" :to="'/admin/exporters'" class="menu-item">Exporters</RouterLink>
       <RouterLink :to="'/admin/inoutoptions'" class="menu-item">In/Out Options</RouterLink>
       <RouterLink :to="'/admin/taskgroups'" class="menu-item">Task Groups</RouterLink>
       <RouterLink v-if="!generalStore.settings.demoMode" :to="'/admin/subscriptions'" class="menu-item">Subscriptions & Billing</RouterLink>

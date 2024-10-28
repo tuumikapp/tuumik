@@ -6,6 +6,7 @@ import { Tenants } from '/src/shared/collections/collections.js';
 
 Meteor.methods({
   async loadExporters() {
+    if (Meteor.settings.public.demoMode) throw new Meteor.Error('403', 'Not allowed in demo environment');
     if (!this.userId) throw new Meteor.Error('401', 'User not logged in');
     const user = await Meteor.users.findOneAsync(this.userId);
     if (!user.permissions.admin) throw new Meteor.Error('403', 'No permission to access this section');
@@ -17,6 +18,7 @@ Meteor.methods({
   async saveExporters(exporters) {
     check(exporters, Array);
 
+    if (Meteor.settings.public.demoMode) throw new Meteor.Error('403', 'Not allowed in demo environment');
     if (!this.userId) throw new Meteor.Error('401', 'User not logged in');
     const user = await Meteor.users.findOneAsync(this.userId);
     if (!user.permissions.admin) throw new Meteor.Error('403', 'No permission to access this section');

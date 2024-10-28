@@ -48,9 +48,6 @@ export default () => {
   import '/src/shared/methods/timetracker.js';
   import '/src/shared/methods/inout.js';
 
-  // methods (server side) (maintenance)
-  import '/src/server/methods/maintenance.js';
-
   // cron
   // import '/src/server/workers/cron.js';
 };

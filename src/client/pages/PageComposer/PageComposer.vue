@@ -467,11 +467,11 @@ function selectTime(event, time) {
     let lastTimeIndex = false;
     let clickedTimeIndex = false;
     for (let i = 0; i < times.value.length; i += 1) {
-      if (this.selectedTimes.includes(times.value[i]._id)) {
+      if (selectedTimes.value.includes(times.value[i]._id)) {
         if (firstTimeIndex === undefined) firstTimeIndex = i;
         lastTimeIndex = i;
       }
-      if (this.times[i]._id === time._id) clickedTimeIndex = i;
+      if (times.value[i]._id === time._id) clickedTimeIndex = i;
     }
     if (firstTimeIndex < clickedTimeIndex) {
       // group select upward
@@ -479,7 +479,7 @@ function selectTime(event, time) {
       for (let i = firstTimeIndex; i < clickedTimeIndex + 1; i += 1) {
         selTimes.push(times.value[i]._id);
       }
-      this.selectedTimes = selTimes;
+      selectedTimes.value = selTimes;
     } else if (lastTimeIndex > clickedTimeIndex) {
       // group select downward
       const selTimes = [];

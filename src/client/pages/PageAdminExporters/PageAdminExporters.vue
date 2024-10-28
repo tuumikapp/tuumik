@@ -2,9 +2,11 @@
 
 <template>
   <div>
-    <div v-if="loading" class="spinner spinner-global"></div>
     <h1>Exporters</h1>
-    <form v-if="!loading || exporters.length" class="main-pane" @submit.prevent="saveExporters()">
+    <div v-if="generalStore.settings.demoMode" class="main-pane">
+      This page not available in demo environment.
+    </div>
+    <form v-else class="main-pane" @submit.prevent="saveExporters()">
       <div class="top-menu">
         <span class="btn" @click="addExporter()">ADD NEW</span>
         <span :class="{ 'sel-btn-on': selectedIndex > -1 }" class="btn sel-btn-off" @click="deleteExporter()">DELETE</span>
@@ -19,14 +21,17 @@
       </div>
       <input type="submit" value="SAVE CHANGES" class="btn-submit" />
     </form>
+    <div v-if="loading" class="spinner spinner-global"></div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useGeneralStore } from '/src/client/stores/general.js';
 import { useNotifierStore } from '/src/client/stores/notifier.js';
 import { Meteor } from 'meteor/meteor';
 
+const generalStore = useGeneralStore();
 const notifierStore = useNotifierStore();
 
 const loading = ref(false);
@@ -34,7 +39,7 @@ const exporters = ref([]);
 const selectedIndex = ref(-1);
 
 onMounted(() => {
-  loadExporters();
+  if (!generalStore.settings.demoMode) loadExporters();
 });
 
 async function loadExporters() {

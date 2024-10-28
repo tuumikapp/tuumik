@@ -6,7 +6,4 @@ export default defineConfig({
   meteor: {
     clientEntry: 'src/client/startup/main.js',
   },
-  optimizeDeps: {
-    exclude: ['vue-meteor-tracker'],
-  },
 });

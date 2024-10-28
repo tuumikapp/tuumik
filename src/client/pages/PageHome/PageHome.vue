@@ -3,7 +3,7 @@
 <template>
   <div>
     <HomeDemo v-if="generalStore.settings.demoMode" />
-    <HomeChartTotals />
+    <HomeChartTotals v-if="1 === 2" />
   </div>
 </template>
 

@@ -7,9 +7,6 @@
     "systemEmail": "noreply@exampledomain.com",
     "monitorEmail": "monitor@exampledomain.com",
     "disableSignupAfterSignup": false,
-    "tenantDeletionByTenant": true,
-    "tenantDeletionViaMaintenanceMethod": true,
-    "maintenancePassword": "123456789",
-    "tenantDeletionPassword": "123456789"
+    "tenantDeletionByTenant": true
   }
 }

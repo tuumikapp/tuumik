@@ -41,7 +41,7 @@ function submitForm() {
     if (!err) {
       router.push('/');
     } else {
-      this.err = err;
+      err.value = err;
     }
   });
 }

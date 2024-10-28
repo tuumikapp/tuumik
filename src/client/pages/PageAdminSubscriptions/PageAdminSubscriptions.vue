@@ -4,7 +4,7 @@
   <div>
     <h1>Subscriptions & Billing</h1>
     <div v-if="generalStore.settings.demoMode" class="main-pane">
-      You are viewing Tuumik in a demo environment.
+      This page not available in demo environment.
     </div>
     <div v-else-if="loading" class="main-pane">
       <div class="spinner spinner-local"></div>
