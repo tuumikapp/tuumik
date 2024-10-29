@@ -1,7 +1,7 @@
 {
   "name": "tuumik",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "UNLICENSED",
   "scripts": {
     "local:prod": "env-cmd -f ./.deploy/local-prod/.env meteor run --settings ./.deploy/local-prod/settings.json",
@@ -16,7 +16,7 @@
     "dayjs": "^1.11.12",
     "lodash.debounce": "^4.0.8",
     "meteor-node-stubs": "^1.2.7",
-    "meteor-vite": "^1.10.4",
+    "meteor-vite": "^1.12.0",
     "pinia": "^2.2.0",
     "postmark": "^4.0.4",
     "vue-router": "^4.2.5"
@@ -32,7 +32,7 @@
     "@biomejs/biome": "1.8.3",
     "@vitejs/plugin-vue": "^4.6.2",
     "env-cmd": "^10.1.0",
-    "vite": "^4.5.2",
+    "vite": "^5.4.10",
     "vue": "^3.4.14"
   }
 }
