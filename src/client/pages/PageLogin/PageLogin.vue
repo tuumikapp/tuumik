@@ -3,6 +3,7 @@
 <template>
   <div class="loginbody">
     <div class="loginbox">
+      <div class="app-version">Tuumik 1.0.3</div>
       <div class="logo"></div>
       <div v-if="loggingIn" class="spinner spinner-login"></div>
       <form @submit.prevent="submitForm()">
@@ -80,6 +81,15 @@ Tracker.autorun(() => {
   margin: 2em 0 0 0;
 }
 
+.app-version {
+  position: absolute;
+  top: 0.8em;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  color: #9f9f9f;
+}
+
 .inp {
   margin: 0 0 0.9em 0;
   padding: 0.6em;
@@ -96,17 +106,17 @@ Tracker.autorun(() => {
 
 .spinner-login {
   position: absolute;
-  top: 1.8em;
+  top: 3em;
   left: 0;
   right: 0;
   margin: 0 auto;
-  height: 8em;
-  width: 8em;
+  height: 7em;
+  width: 7em;
 }
 
 .logo {
   position: absolute;
-  top: 3.6em;
+  top: 4.2em;
   left: 0;
   right: 0;
   width: 5em;

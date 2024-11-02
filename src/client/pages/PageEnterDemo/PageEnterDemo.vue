@@ -2,24 +2,19 @@
 
 <template>
   <div>
-    <form class="main-pane ext-pane" @submit.prevent="createDemo1()">
+    <div class="main-pane ext-pane">
       <h2 class="top-h2">START DEMO</h2>
       <div class="demo-text">
         The live demo is a free and convenient way to quickly assess Tuumik's features in a temporary environment. It creates a sample organization with some user accounts and fills those
-        accounts with randomly generated data. It showcases a law firm with lawyers tracking their work. These demo accounts will be automatically deleted after a few days. Feel free to try
+        accounts with randomly generated data. It showcases a law firm with lawyers tracking their work. These demo accounts will be automatically deleted after a while. Feel free to try
         out the app in the demo.
       </div>
-      <div class="demo-text2">
-        You will receive the login information for the new accounts immediately via email.
-      </div>
-      <label for="email" class="field-label">EMAIL:</label>
-      <input id="email" v-model="email" type="text" maxlength="100" />
-      <input v-if="!loading" type="submit" value="START DEMO" class="btn-submit" />
+      <div v-if="!loading" class="btn-submit" @click="createDemo()">START DEMO</div>
       <div v-if="loading" class="spinner"></div>
       <div v-if="loading">
         Creating demo accounts. Please wait.
       </div>
-    </form>
+    </div>
   </div>
 </template>
 
@@ -28,25 +23,15 @@ import { ref } from 'vue';
 import { Meteor } from 'meteor/meteor';
 import { useNotifierStore } from '/src/client/stores/notifier.js';
 import { useRouter } from 'vue-router';
-import { isValidEmailAddress } from '/src/client/utils/validation.js';
 
 const notifierStore = useNotifierStore();
 const router = useRouter();
-const email = ref('');
 const loading = ref(false);
 
-function createDemo1() {
-  if (!isValidEmailAddress(email.value)) {
-    notifierStore.addTemp({ type: 'error', txt: 'INVALID EMAIL ADDRESS' });
-  } else {
-    createDemo2();
-  }
-}
-
-async function createDemo2() {
+async function createDemo() {
   loading.value = true;
   try {
-    const res = await Meteor.callAsync('insertDemoData', email.value);
+    const res = await Meteor.callAsync('createDemo');
     logIntoDemoAccount(res);
   } catch (err) {
     notifierStore.addTemp({ type: 'error', txt: err.reason });
@@ -70,11 +55,6 @@ function logIntoDemoAccount(accountEmail) {
 .demo-text {
   text-align: justify;
   margin: 0 0 0.5em 0;
-}
-
-.demo-text2 {
-  text-align: justify;
-  margin: 1em 0 0 0;
 }
 
 .btn-submit {

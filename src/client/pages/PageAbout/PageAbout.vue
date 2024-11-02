@@ -3,6 +3,7 @@
 <template>
   <div>
     <h1>About & Legal</h1>
+    <div class="app-version">Tuumik 1.0.3</div>
     This software application (hereinafter "Tuumik") is developed by Tuumik Systems OÜ, a company registered in Estonia. Tuumik is protected by copyright.
     <br />
     More information available at
@@ -45,6 +46,10 @@ function logoutOthers() {
 <style scoped>
 .logout-holder {
   margin: 4em 0;
+}
+
+.app-version {
+  margin: 0 0 1em 0;
 }
 
 .tech-title {

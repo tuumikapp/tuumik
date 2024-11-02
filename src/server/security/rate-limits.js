@@ -100,13 +100,13 @@ export default function() {
     {
       type: 'method',
       name(name) {
-        return ['insertDemoData'].includes(name);
+        return ['createDemo'].includes(name);
       },
       connectionId() {
         return true;
       },
     },
-    20,
+    5,
     3600000,
   );
 

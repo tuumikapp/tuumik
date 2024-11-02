@@ -4,7 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { Tenants } from '/src/shared/collections/collections.js';
 import inOutOptions from '/src/server/initdata/inout-options.js';
 
-export default async email => {
+export default async () => {
   const teams = [
     { id: '10', name: 'Dispute' },
     { id: '20', name: 'Finance' },
@@ -32,6 +32,7 @@ export default async email => {
     composerExportersFront,
     composerExportersBack,
     preventLogin: false,
+    demo: true,
     createdAt: new Date(),
   });
   return tenantId;
