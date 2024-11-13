@@ -1,5 +1,6 @@
 {
   "public": {
+    "email": false,
     "demoMode": false,
     "composerLimit": 1000
   },

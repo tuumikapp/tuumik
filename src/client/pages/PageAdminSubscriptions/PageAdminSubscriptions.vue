@@ -26,7 +26,7 @@
       You can manage your subscriptions to Tuumik in our externally hosted Customer Portal.
       To sign into the Customer Portal you need access to the email address that is set up as the billing address for your subscription.
       In the Customer Portal you can view and download your invoices, change payment data, and update and cancel your subscriptions.<br>
-      <a v-if="subData.stripeCustomerPortalUrl" :href="subData.stripeCustomerPortalUrl" target="_blank" class="btn-submit customer-portal-link">Open Customer Portal</a>
+      <a v-if="subData.customerPortalUrl" :href="subData.customerPortalUrl" target="_blank" class="btn-submit customer-portal-link">Open Customer Portal</a>
       <h2>Cancel Subscriptions</h2>
       You can cancel your subscription to Tuumik at any time in the Customer Portal.
       <h2>Automatic Subscription Updates</h2>
@@ -34,7 +34,7 @@
       subscription quantity. This version of Tuumik does not support setting up such connection. You can update your subscription in the Customer Portal manually when necessary.
       <h2>External Access</h2>
       Information about billing in Tuumik and the link to the Customer Portal is also available on
-      <a v-if="subData.tuumikBillingPortalUrl" :href="subData.tuumikBillingPortalUrl" target="_blank" class="rlink">{{ subData.tuumikBillingPortalUrl }}</a>.
+      <a v-if="subData.billingPortalUrl" :href="subData.billingPortalUrl" target="_blank" class="rlink">{{ subData.billingPortalUrl }}</a>.
       This is useful if you lose access to your Tuumik deployment for any reason.
       <h2>Support</h2>
       If you have any questions regarding your subscription or billing, please contact support@tuumik.com.
@@ -53,6 +53,7 @@ import { ref, onMounted } from 'vue';
 import { useGeneralStore } from '/src/client/stores/general.js';
 import { useNotifierStore } from '/src/client/stores/notifier.js';
 import SubscriptionsPlan from './components/SubscriptionsPlan.vue';
+import { appVersion } from '/src/shared/utils/app.js';
 
 const generalStore = useGeneralStore();
 const notifierStore = useNotifierStore();
@@ -67,7 +68,8 @@ onMounted(() => {
 async function loadSubData() {
   loading.value = true;
   const url = 'https://api.tuumik.com/v1/subscriptions/general';
-  const options = { method: 'GET', mode: 'cors' };
+  const body = { app: { version: appVersion } };
+  const options = { method: 'POST', body: JSON.stringify(body), mode: 'cors' };
   try {
     const res = await fetch(url, options);
     subData.value = await res.json();

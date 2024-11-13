@@ -4,7 +4,8 @@
   <div>
     <div class="main-pane ext-pane">
       <h2 class="top-h2">PASSWORD RESET</h2>
-      <form v-if="!linkSent" @submit.prevent="sendLink1()">
+      <div v-if="!generalStore.settings.email">Sending email is not enabled on this server.</div>
+      <form v-else-if="!linkSent" @submit.prevent="sendLink1()">
         <label for="email" class="field-label">EMAIL:</label>
         <input id="email" v-model="email" type="text" maxlength="100" />
         <input type="submit" value="SEND RESET EMAIL" class="btn-submit" />
@@ -17,10 +18,12 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useGeneralStore } from '/src/client/stores/general.js';
 import { useNotifierStore } from '/src/client/stores/notifier.js';
 import { Meteor } from 'meteor/meteor';
 import { isValidEmailAddress } from '/src/client/utils/validation';
 
+const generalStore = useGeneralStore();
 const notifierStore = useNotifierStore();
 
 const loading = ref(false);

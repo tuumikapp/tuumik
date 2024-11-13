@@ -2,14 +2,17 @@
 
 <template>
   <div>
-    <form class="main-pane ext-pane" @submit.prevent="resetPassword1()">
+    <div class="main-pane ext-pane">
       <h2 class="top-h2">PASSWORD RESET</h2>
-      <label for="psw-first" class="field-label">NEW PASSWORD:</label>
-      <input id="psw-first" v-model="password1" type="password" maxlength="100" />
-      <label for="psw-second" class="field-label">NEW PASSWORD AGAIN:</label>
-      <input id="psw-second" v-model="password2" type="password" maxlength="100" />
-      <input type="submit" value="RESET PASSWORD" class="btn-submit" />
-    </form>
+      <div v-if="!generalStore.settings.email">Sending email is not enabled on this server.</div>
+      <form v-else @submit.prevent="resetPassword1()">
+        <label for="psw-first" class="field-label">NEW PASSWORD:</label>
+        <input id="psw-first" v-model="password1" type="password" maxlength="100" />
+        <label for="psw-second" class="field-label">NEW PASSWORD AGAIN:</label>
+        <input id="psw-second" v-model="password2" type="password" maxlength="100" />
+        <input type="submit" value="RESET PASSWORD" class="btn-submit" />
+      </form>
+    </div>
     <div v-if="loading" class="spinner spinner-global"></div>
   </div>
 </template>
@@ -18,12 +21,14 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useRoute } from 'vue-router';
+import { useGeneralStore } from '/src/client/stores/general.js';
 import { useNotifierStore } from '/src/client/stores/notifier.js';
 import { Accounts } from 'meteor/accounts-base';
 import { isValidPasswordStrength } from '/src/client/utils/validation';
 
 const router = useRouter();
 const route = useRoute();
+const generalStore = useGeneralStore();
 const notifierStore = useNotifierStore();
 
 const loading = ref(false);

@@ -3,7 +3,7 @@
 <template>
   <div class="loginbody">
     <div class="loginbox">
-      <div class="app-version">Tuumik 1.0.3</div>
+      <div class="app-version">Tuumik {{ appVersion }}</div>
       <div class="logo"></div>
       <div v-if="loggingIn" class="spinner spinner-login"></div>
       <form @submit.prevent="submitForm()">
@@ -14,7 +14,7 @@
       <RouterLink v-if="generalStore.settings.demoMode" to="/start-demo" class="demo-link">
         START DEMO
       </RouterLink>
-      <RouterLink v-else to="/forgot-password" class="forgot-link">
+      <RouterLink v-else-if="generalStore.settings.email" to="/forgot-password" class="forgot-link">
         FORGOT PASSWORD
       </RouterLink>
       <div v-if="err" class="err">{{ err.reason }}</div>
@@ -28,6 +28,7 @@ import { useGeneralStore } from '/src/client/stores/general.js';
 import { useRouter } from 'vue-router';
 import { Meteor } from 'meteor/meteor';
 import { Tracker } from 'meteor/tracker';
+import { appVersion } from '/src/shared/utils/app.js';
 
 const generalStore = useGeneralStore();
 const router = useRouter();

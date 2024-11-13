@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { Times, Clients, Projects, Tenants } from '/src/shared/collections/collections.js';
 import normalizeStringForAC from '/src/shared/utils/normalization.js';
+import { appVersion } from '/src/shared/utils/app.js';
 import { fetch } from 'meteor/fetch';
 
 Meteor.methods({
@@ -269,9 +270,12 @@ Meteor.methods({
         decimalMark: tenant.decimalMark,
         currency: tenant.currency,
       },
+      app: {
+        version: appVersion,
+      },
     };
     const opts = {
-      method: 'post',
+      method: 'POST',
       body: JSON.stringify(body),
       headers: { 'Content-Type': 'application/json', 'x-api-key': exporter.apiKey },
     };

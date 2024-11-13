@@ -3,7 +3,7 @@
 <template>
   <div>
     <h1>About & Legal</h1>
-    <div class="app-version">Tuumik 1.0.3</div>
+    <div class="app-version">Tuumik {{ appVersion }}</div>
     This software application (hereinafter "Tuumik") is developed by Tuumik Systems OÜ, a company registered in Estonia. Tuumik is protected by copyright.
     <br />
     More information available at
@@ -23,6 +23,7 @@ import { ref } from 'vue';
 import { useGeneralStore } from '/src/client/stores/general.js';
 import { useNotifierStore } from '/src/client/stores/notifier.js';
 import { Meteor } from 'meteor/meteor';
+import { appVersion } from '/src/shared/utils/app.js';
 
 const generalStore = useGeneralStore();
 const notifierStore = useNotifierStore();

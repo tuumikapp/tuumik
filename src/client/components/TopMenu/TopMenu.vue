@@ -3,9 +3,7 @@
 <template>
   <div class="header">
     <RouterLink v-if="!generalStore.isMobile" to="/" class="logo"></RouterLink>
-    <div v-if="!generalStore.isMobile" :class="{ 'menu-reg-icon-on': showMenuReg }" class="menu-reg-icon" @click="showMenuReg = !showMenuReg">
-      MENU
-    </div>
+    <div v-if="!generalStore.isMobile" :class="{ 'menu-reg-icon-on': showMenuReg }" class="menu-reg-icon" @click="showMenuReg = !showMenuReg"></div>
     <div v-if="showMenuReg" class="menu-closer" @click="showMenuReg = false"></div>
     <div class="spacer"></div>
     <IconConnection />
@@ -62,10 +60,13 @@ const showMenuMob = ref(false);
 
 .menu-reg-icon {
   height: 3em;
-  line-height: 3em;
-  padding: 0 2em;
+  width: 6em;
   border-left: 1px solid #c9c9c9;
   border-right: 1px solid #c9c9c9;
+  background-image: url('/icons/menu.svg');
+  background-repeat: no-repeat;
+  background-size: auto 80%;
+  background-position: center center;
   cursor: pointer;
   user-select: none;
 }

@@ -116,7 +116,7 @@
           <div class="email-address">{{ email.address }}</div>
           <div v-if="email.verified" class="email-verified">VERIFIED</div>
           <div v-else class="email-unverified">NOT VERIFIED</div>
-          <div v-if="!email.verified" class="btn" @click="sendVerifyEmail(email.address)">SEND VERIFICATION EMAIL</div>
+          <div v-if="!email.verified && generalStore.settings.email" class="btn" @click="sendVerifyEmail(email.address)">SEND VERIFICATION EMAIL</div>
           <div class="btn" @click="removeUserEmail(email.address)">REMOVE</div>
         </div>
       </form>
