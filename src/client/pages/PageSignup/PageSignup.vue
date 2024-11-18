@@ -40,7 +40,8 @@
       <input id="psw-second" v-model="password2" type="password" maxlength="100" />
       <div class="legal-notice">
         This software application (hereinafter "Tuumik") is developed by Tuumik Systems OÜ, a company registered in Estonia. Tuumik is protected by copyright.
-        Tuumik is free to use for small teams. Please see licensing terms inside the app on "Subscriptions & Billing" page for more details.
+        Tuumik is free to use for small teams. Please see licensing terms inside the app on "Subscriptions & Billing" page for details. More information available at
+        <a href="https://www.tuumik.com" target="_blank" class="rlink">www.tuumik.com.</a>
       </div>
       <input type="submit" value="CREATE ORGANIZATION AND USER ACCOUNT" class="btn-submit" />
       <div v-if="loading" class="spinner spinner-global"></div>

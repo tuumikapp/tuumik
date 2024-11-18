@@ -17,6 +17,10 @@ Tuumik has been in production use by law firms since 2018. In 2024 Tuumik System
 
 Tuumik runs on the web and is installable as a PWA on computers and mobile devices. The app is built on Meteor/Node, Vue and MongoDB.
 
+## Documentation
+
+You can find additional documentation in [/docs](docs/).
+
 ## License
 
 Tuumik is developed by Tuumik Systems OÜ, a company registered in Estonia. Tuumik is protected by copyright. Tuumik is free to use for small teams.
