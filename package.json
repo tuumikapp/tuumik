@@ -1,7 +1,7 @@
 {
   "name": "tuumik",
   "private": true,
-  "version": "1.0.5",
+  "version": "1.0.6",
   "license": "UNLICENSED",
   "scripts": {
     "local:prod": "env-cmd -f ./.deploy/local-prod/.env meteor run --settings ./.deploy/local-prod/settings.json",
